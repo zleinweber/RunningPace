@@ -10,6 +10,7 @@ templateTopLevel.hidden = true;
 
 let paceTableContent = document.getElementById("paceTable");
 let paceForm = document.getElementById("paceForm");
+
 paceForm.addEventListener("submit", event => {
     let numMiles = paceForm.elements['numMiles'].value;
     let pace = paceForm.elements['pace'].value;
@@ -18,4 +19,8 @@ paceForm.addEventListener("submit", event => {
     paceTableContent.innerHTML = "";
     paceTableContent.appendChild(paceTableHTML);
     event.preventDefault();
+});
+
+paceForm.addEventListener("reset", event => {
+    paceTableContent.innerHTML = "";
 });
