@@ -1,9 +1,10 @@
 import '../styles/index.scss';
-import { paceTableView, zachModuleTest } from './paceTable';
+import { paceTableView } from './paceTable';
 
 if (process.env.NODE_ENV === 'development') {
     require('../index.html');
 }
+
 const templateTopLevel = document.getElementById("docTemplates");
 templateTopLevel.hidden = true;
 
