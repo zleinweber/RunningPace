@@ -1,5 +1,5 @@
 $body-color: black;
-$jumbotron-color: DarkSlateGrey;
+$jumbotron-color: darkslategrey;
 $table-header-border-width: 2px;
 
 body {
@@ -10,6 +10,7 @@ body {
 .page-header {
   color: $jumbotron-color;
 }
+
 .pace-header-border {
   border-width: $table-header-border-width !important;
 }

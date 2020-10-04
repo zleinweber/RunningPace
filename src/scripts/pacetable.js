@@ -1,5 +1,6 @@
 const paceTableHeaderID = "paceTableHeader";
 const paceTableRowID = "paceTableRow";
+const renderAlertID = "renderAlert";
 
 /*
  * Template Functions for Pace Table
@@ -7,9 +8,15 @@ const paceTableRowID = "paceTableRow";
 
 export function paceTableView(numMiles, pace) {
     const paceTable = document.createElement("div");
-    const paceInSeconds = parseMilePace(pace);
+    let paceInSeconds = 0;
     let elapsedTime = 0;
     let elapsedTimeHuman = "";
+    
+    try {
+        paceInSeconds = parseMilePace(pace);
+    } catch (error) {
+        return paceTableAlert(error);
+    }
 
     paceTable.appendChild(paceTableHeader());
     for (let mile=1; mile <= numMiles; mile++) {
@@ -22,13 +29,13 @@ export function paceTableView(numMiles, pace) {
 }
 
 function paceTableHeader() {
-    let tableHeader = cloneTableHTML(paceTableHeaderID);
+    let tableHeader = cloneTemplateElement(paceTableHeaderID);
     return tableHeader;
 }
 
 function paceTableRow(mile, pace) {
     //console.log(`on mile ${mile} at ${pace} pace`);
-    let tableRow = cloneTableHTML(paceTableRowID);
+    let tableRow = cloneTemplateElement(paceTableRowID);
     let mileCol = tableRow.querySelector("#mileDataCol");
     let paceCol = tableRow.querySelector("#paceDataCol");
 
@@ -38,7 +45,13 @@ function paceTableRow(mile, pace) {
     return tableRow;
 }
 
-function cloneTableHTML(elementId) {
+function paceTableAlert(alertText) {
+    let renderAlert = cloneTemplateElement(renderAlertID);
+    renderAlert.innerText = alertText;
+    return renderAlert;
+}
+
+function cloneTemplateElement(elementId) {
     return document.getElementById(elementId).cloneNode(true);
 }
 
@@ -65,6 +78,10 @@ function cloneTableHTML(elementId) {
         seconds = parseInt(paceArray[1]);
     } else {
         throw new Error(`Invalid Pace Format ${pace}`);
+    }
+
+    if ((Number.isNaN(hours) || Number.isNaN(minutes) || Number.isNaN(seconds))) {
+        throw new Error(`Unable to parce "${pace}" to Integers`);
     }
 
     paceSeconds = ((hours * 60) * 60) + (minutes * 60) + seconds;
