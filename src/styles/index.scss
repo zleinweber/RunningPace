@@ -1,6 +1,15 @@
 $body-color: black;
+$jumbotron-color: DarkSlateGrey;
+$table-header-border-width: 2px;
 
 body {
   color: $body-color;
   font-family: sans-serif;
+}
+
+.page-header {
+  color: $jumbotron-color;
+}
+.pace-header-border {
+  border-width: $table-header-border-width !important;
 }

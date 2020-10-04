@@ -13,12 +13,10 @@
 </head>
 <body>
   <!-- HTML Content -->
-  <div class="jumbotron">
+  <div class="jumbotron page-header">
     <div class="container">
       <h1 class="display-4">Running Pace</h1>
-      <p class="lead">Running is life...</p>
-      <hr>
-      <p>Some sub-text goes here...</p>
+      <p class="lead">Calculate total elapsed time for each mile split for a given average pace.</p>
     </div>
   </div>
 
@@ -41,17 +39,17 @@
 
   <!-- HTML Templates -->
   <div id="docTemplates">
-    <div id="paceTableHeader" class="row mt-5">
+    <div id="paceTableHeader" class="row mt-5 mb-2 border-bottom border-primary pace-header-border">
       <div id="mileDataColHeader" name="mileData" class="col-sm-2">
         <p class="lead">Mile</p>
       </div>
       <div id="paceDataColHeader" name="paceData" class="col-sm">
-        <p class="lead">Time</p>
+        <p class="lead">Elapsed Time</p>
       </div>
     </div>
 
-    <div id="paceTableRow" class="row">
-      <div id="mileDataCol" name="mileData" class="col-sm-2">PlaceHolder</div>
+    <div id="paceTableRow" class="row border-bottom border-secondary">
+      <div id="mileDataCol" name="mileData" class="col-sm-2 font-weight-light">PlaceHolder</div>
       <div id="paceDataCol" name="paceData" class="col-sm">PlaceHolder</div>
     </div>
   </div>
